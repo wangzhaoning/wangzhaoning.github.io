@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="//wangzn.xyz">
-  <title>工厂模式 | Maskflow的博客</title>
+  <title>设计模式之简单工厂模式 | Maskflow的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今天下午我们一起订了披萨 public class OrderPizza{ public static void main(String[] args) {      PizzaStore pizzaStore=new  PizzaStore();  //大家找了一家披萨店      Pizza pizzaTestA=pizzaStore.produce(&amp;quot;CheesePizza&amp;quo">
+  <meta name="description" content="今天下午我们一起订了披萨 12345678910111213141516171819public class OrderPizza&amp;#123;    public static void main(String[] args) &amp;#123;        PizzaStore pizzaStore=new  PizzaStore();  //大家找了一家披萨店        Pizza pizza">
 <meta name="keywords" content="程序员">
 <meta property="og:type" content="article">
-<meta property="og:title" content="工厂模式">
+<meta property="og:title" content="设计模式之简单工厂模式">
 <meta property="og:url" content="//wangzn.xyz/2019/04/29/工厂模式/index.html">
 <meta property="og:site_name" content="Maskflow的博客">
-<meta property="og:description" content="今天下午我们一起订了披萨 public class OrderPizza{ public static void main(String[] args) {      PizzaStore pizzaStore=new  PizzaStore();  //大家找了一家披萨店      Pizza pizzaTestA=pizzaStore.produce(&amp;quot;CheesePizza&amp;quo">
+<meta property="og:description" content="今天下午我们一起订了披萨 12345678910111213141516171819public class OrderPizza&amp;#123;    public static void main(String[] args) &amp;#123;        PizzaStore pizzaStore=new  PizzaStore();  //大家找了一家披萨店        Pizza pizza">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-29T12:51:02.388Z">
+<meta property="og:updated_time" content="2019-04-30T14:43:24.987Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="工厂模式">
-<meta name="twitter:description" content="今天下午我们一起订了披萨 public class OrderPizza{ public static void main(String[] args) {      PizzaStore pizzaStore=new  PizzaStore();  //大家找了一家披萨店      Pizza pizzaTestA=pizzaStore.produce(&amp;quot;CheesePizza&amp;quo">
+<meta name="twitter:title" content="设计模式之简单工厂模式">
+<meta name="twitter:description" content="今天下午我们一起订了披萨 12345678910111213141516171819public class OrderPizza&amp;#123;    public static void main(String[] args) &amp;#123;        PizzaStore pizzaStore=new  PizzaStore();  //大家找了一家披萨店        Pizza pizza">
   
     <link rel="alternative" href="/atom.xml" title="Maskflow的博客" type="application/atom+xml">
   
@@ -166,7 +166,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      工厂模式
+      设计模式之简单工厂模式
     </h1>
   
 
@@ -180,103 +180,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>今天下午我们一起订了披萨</p>
-<p>public class OrderPizza{</p>
-<pre><code>public static void main(String[] args) {
-
-    PizzaStore pizzaStore=new  PizzaStore();  //大家找了一家披萨店
-
-    Pizza pizzaTestA=pizzaStore.produce(&quot;CheesePizza&quot;); // A童鞋想吃芝士味
-
-    Pizza pizzaTestB=pizzaStore.produce(&quot;DurianPizza&quot;);// B童鞋想吃榴莲味
-
-    Pizza pizzaTestC=pizzaStore.produce(&quot;ChinesePizza&quot;); //C同学想吃中国味！！
-
-    System.out.println(pizzaTestA.order());
-
-    System.out.println(pizzaTestB.order());
-
-    System.out.println(pizzaTestC.order());
-
-}
-</code></pre><p>//这就是披萨，它要被我们预定的！！</p>
-<p>public interface Pizza {</p>
-<pre><code>public String order();
-</code></pre><p>}</p>
-<p>//好可惜，从这家看起来店内部看起来好像只有两种口味哎</p>
-<p>public class PizzaStore {</p>
-<pre><code>public Pizza produce(String pizza) {
-
-    if(pizza.equals(&quot;CheesePizza&quot;)) {
-
-        return new CheesePizza();
-
-    }
-
-    else if(pizza.equals(&quot;DurianPizza&quot;)) {
-
-        return new DurianPizza();
-
-    }else {
-
-        return new NewPizza();
-
-    }
-
-}
-</code></pre><p>}</p>
-<p>//这是榴莲的做法</p>
-<p>public class DurianPizza implements Pizza{</p>
-<pre><code>@Override
-
-public String order() {
-
-    return &quot;i order DurianPizza&quot;;
-
-}
-</code></pre><p>}</p>
-<p>//这是芝士的做法</p>
-<p>public class CheesePizza implements Pizza{</p>
-<pre><code>@Override
-
-public String order() {
-
-    return &quot;i order CheesePizza&quot;;
-
-}
-</code></pre><p>}</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderPizza</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        PizzaStore pizzaStore=<span class="keyword">new</span>  PizzaStore();  <span class="comment">//大家找了一家披萨店</span></span><br><span class="line"></span><br><span class="line">        Pizza pizzaTestA=pizzaStore.produce(<span class="string">"CheesePizza"</span>); <span class="comment">// A童鞋想吃芝士味</span></span><br><span class="line"></span><br><span class="line">        Pizza pizzaTestB=pizzaStore.produce(<span class="string">"DurianPizza"</span>);<span class="comment">// B童鞋想吃榴莲味</span></span><br><span class="line"></span><br><span class="line">        Pizza pizzaTestC=pizzaStore.produce(<span class="string">"ChinesePizza"</span>); <span class="comment">//C同学想吃中国味！！</span></span><br><span class="line"></span><br><span class="line">        System.out.println(pizzaTestA.order());</span><br><span class="line"></span><br><span class="line">        System.out.println(pizzaTestB.order());</span><br><span class="line"></span><br><span class="line">        System.out.println(pizzaTestC.order());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这就是披萨，它要被我们预定的！！</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Pizza</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">order</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//好可惜，从这家看起来店内部看起来好像只有两种口味哎</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PizzaStore</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Pizza <span class="title">produce</span><span class="params">(String pizza)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(pizza.equals(<span class="string">"CheesePizza"</span>)) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> CheesePizza();</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(pizza.equals(<span class="string">"DurianPizza"</span>)) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> DurianPizza();</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> NewPizza();</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这是榴莲的做法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DurianPizza</span> <span class="keyword">implements</span> <span class="title">Pizza</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">order</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"i order DurianPizza"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这是芝士的做法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CheesePizza</span> <span class="keyword">implements</span> <span class="title">Pizza</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">order</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"i order CheesePizza"</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p> 好了，简单工厂写完了，就好像我们买披萨只需要找披萨店，然后选口味就行。不用去这家找榴莲披萨，那家找芝士披萨，万一跑错门了呢？</p>
 <p>如果在优化下，让披萨店提供下菜单，毕竟之前我们点披萨的时候都不知道披萨店有啥子</p>
-<p>public class PizzaStore {</p>
-<pre><code>public Pizza produceCheesePizza() {
-
-        return new CheesePizza();
-
-    }
-
-public Pizza produceDurianPizza() {
-
-    return new DurianPizza();
-
-}
-</code></pre><p>}</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PizzaStore</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Pizza <span class="title">produceCheesePizza</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> CheesePizza();</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Pizza <span class="title">produceDurianPizza</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DurianPizza();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这样大家就不用瞎点了，C同学也不会想出 中国味披萨….</p>
-<p>public class OrderPizza{</p>
-<pre><code>public static void main(String[] args) {
-
-    PizzaStore pizzaStore=new  PizzaStore();
-
-    Pizza pizzaTestA=pizzaStore.produceCheesePizza();
-
-    Pizza pizzaTestB=pizzaStore.produceDurianPizza();
-
-    System.out.println(pizzaTestA.order());
-
-    System.out.println(pizzaTestB.order());
-
-}
-</code></pre><p>}</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderPizza</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        PizzaStore pizzaStore=<span class="keyword">new</span>  PizzaStore();</span><br><span class="line"></span><br><span class="line">        Pizza pizzaTestA=pizzaStore.produceCheesePizza();</span><br><span class="line"></span><br><span class="line">        Pizza pizzaTestB=pizzaStore.produceDurianPizza();</span><br><span class="line"></span><br><span class="line">        System.out.println(pizzaTestA.order());</span><br><span class="line"></span><br><span class="line">        System.out.println(pizzaTestB.order());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>所以C童鞋选择吃炒面了</p>
-<p>ps :手动画个类图在</p>
 
       
 
