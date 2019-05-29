@@ -160,6 +160,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cockroachDB学习笔记二" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/29/cockroachDB学习笔记二/">cockroachDB学习笔记二</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/29/cockroachDB学习笔记二/" class="archive-article-date">
+  	<time datetime="2019-05-29T13:57:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基础架构"><a href="#基础架构" class="headerlink" title="基础架构"></a>基础架构</h2><p>最顶层是sql层，cockroachDB的sql层和传统关系型数据库的概念一致。<br><img src="../img/cr2-1.png" alt="架构1"><br><img src="../img/cr2-2.png" alt="架构2"><br>每个Range有3个副本， 节点和Range可以根据不同的物理网络拓扑结构进行编排，从而在可靠性和性能之间折衷。 N为总副本数，F为可容忍故障副本数，则N=2F+1。</p>
+<p>CockroachDB key可以是任意字节数组。key有两种类型：系统表key和用户表key。<br>系统表key被用于内部的数据结构和元数据。用户表key包含用户表数据。<br>系统表key和用户表key通过前缀区分。系统表key始终小于用户表key</p>
+<h2 id="多版本数据"><a href="#多版本数据" class="headerlink" title="多版本数据"></a>多版本数据</h2><p>维护了数据的历史版本，版本之间通过事务的提交时间戳区分。制定快照时间可读取此时间戳之前的最新版本数据。所有的版本都有一个最小的期限。当系统进行compaction时候，过去的版本会被系统回收。用户可以自行制定数据的有效期。</p>
+<h2 id="无锁分布式事务"><a href="#无锁分布式事务" class="headerlink" title="无锁分布式事务"></a>无锁分布式事务</h2><p>两种食物隔离级别<br>快照隔离级别<br>串行化快照隔离级别</p>
+<p>SI性能好，实现简单，但是存在写偏序问题。<br>tip（ 写偏序（Write Skew）也是一致性约束下的异常现象，即两个并行事务都基于自己读到的数据集去覆盖另一部分数据集，在串行化情况下两个事务无论何种先后顺序，最终将达到一致状态，但SI隔离级别下无法实现。下图的“黑白球”常常被用来说明写偏序问题。）<br><img src="../img/cr2-3.png" alt="架构3"><br>相比而言，SSI的实现上稍微复杂一点。<br>SI和SSI都要求缓存该Range上发生的读操作结果，如果写操作时间戳比最近一次读操作时间戳要小，则写操作失败。因此，每个Range都有一个缓存（timestamp cache），保存该Range中key被读取的最新时间戳。<br>依据队列的方式，最老的时间戳会被优先剔除<br>每个事务开始的时候都会被分配一个随机优先级和“候选时间戳”（就是当时本地的时间戳），如果没有事务冲突的话，在事务完成后，这将成为事务的最终提交时间戳。</p>
+<p>在跨多个节点的分布式事务执行过程中，SI允许事务的候选时间戳变大，而SSI不允许。（todo，为啥呢？是因为它是一系列事务串行合集，只会回滚，不会变化）</p>
+<p>每个CockroachDB，维持本地的HLC（混合逻辑时钟），当发送数据的时候，会获取本地的时钟作为时间戳，接受事件时，会根据接受到的事件的时间戳来更新本地的HLC。<br>换句话说，每个节点维护自己的时间戳，当发生事务交互（读写操作时），都会更新本地的HLC，一是用来做事务冲突处理，二是保证之后的事务请求时间戳都大于当前的事务请求时间。事务冲突处理有两种方式，重启和中断，是根据事务类型来做区分。</p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p>关于SSI实现，可参考Cahill论文 《Serializable Isolation for Snapshot Databases》<br>关于SSI如何解决读写冲突，可参考论文《Fast Distributed Transactions for Partitioned Database Systems》<br>关于SSI实现主要参考Yabandeh 的论文《A Critique of Snapshot Isolation》。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/29/cockroachDB学习笔记二/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-cockroachDB学习笔记一" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -859,72 +929,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/04/13/川渝游记三/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-川渝游记二" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/12/川渝游记二/">川渝游记二</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/12/川渝游记二/" class="archive-article-date">
-  	<time datetime="2019-04-12T14:53:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><strong>走过了这么些路，见过了这么多人，欣赏了这么些景，体会不同情境下的心潮激荡，洞察自我，建立更高级的内心秩序，这就是旅行于我而言的意义。</strong></p>
-</blockquote>
-<p>起来的不早，吃到了军屯锅盔和冰粉，都是让人惊喜的美味。为着明天的青城山做准备，到犀浦定了宾馆。<br><img src="../img/2.1.jpg" alt="锅盔"><br><img src="../img/2.2.jpg" alt="冰粉"><br>来到了宽窄巷子，没啥好吃的东西，还是充斥着旅游景区的通病，感受不到底蕴和匠心。商品都是一次性的。<br><img src="../img/2.3.jpg" alt="宽窄巷子"><br>文殊院是令人心静的地方，这里香火旺盛，宣传也做得很积极。没想到的是，秦笑宇竟然也会如此虔诚的想去上香。我没有去拜佛，我始终相信佛在心中，想拜就拜，无需做空架子。途中遇见一小哥，衣着时尚，遇像便拜，面容虔诚，动作整齐规范，但却有股强烈的执念。我觉得凡事想以佛家为依靠是不可取的。“本来无一物，何处染尘埃”，心没有杂念佛自然就在身边了，执念越是深，越是有所求，佛便越远。<br>我和秦笑宇各往功德箱里投了5块钱。当时觉得这样能聚集信仰的地方，正是现代社会中所需要的。其中各处修缮，传播，收纳学员都是需要经费，我们应该尽力做点贡献。后来让秦笑宇摸了摸旁边的金麒麟，我告诉她现在你晚上就敢一个人上厕所洗漱了，你有佛气加成，邪魔鬼怪都不敢来找你啦。<br>顺道拿了本结缘的禅本。在休息时候大概翻看了下。是本寺主持 宗性“法师”语录合集。我觉得此人水平不高，不配称得上法师。文字中有显而易见让人诟病的地方——对科学的无知。另一方面修佛修禅是修自己内心的，他反而却是大谈特谈如何教导别人，都是一些纸上谈兵的大道理。就和在知乎上看到的一个问题<a href="https://www.zhihu.com/question/51222763/answer/124829080" target="_blank" rel="noopener">，“传统武术打的过自由搏击吗？”</a><br>任何巧妙的招数都是需要经过训练和实践的，教人是件很严肃的事情。必须要有体系，同时有大量例证，结合自己亲身体验，才敢说有了一些教导的本事。越有智慧的人越是不会轻易教导他人。智慧如季羡林先生，在谈佛时，也只是说明自己对佛的理解。在品味生活禅中，也只是讲故事。生活如此私人，不该有人告诉你该怎么做，只需要提点这么做的结果可能会怎样就足够了。<br><img src="../img/2.4.jpg" alt="结缘文本"><br>我们来到了锦里，打算解决晚饭问题。游客很多，巷子里很拥挤，伴随着几声吆喝声，也颇有几分市井氛围。吃了烤肉，水晶包，兔头，味同嚼蜡。景色装饰的很不错。但也同宽窄巷子一样的通病，以小吃街闻名，却因为游客数量庞大和一次性，食物单单只存留了形与色，而丧失了本身的美味。人都是想赚更多的钱。<br><img src="../img/2.5.jpg" alt="锦里"><br>骑车来到了九眼桥酒吧街，空气里充斥着淡淡的啤酒清香，还未到夜里，各个小店里还没有客人。安详的空气和飘来的悠远民谣却让人很容易联想到夜里歌声，大笑声，灯光下的轻快景象。<br>走了很长的路，来到了春熙路附近的一家川菜馆。因为这两天吃辣太多了，我们点了两道清淡的菜。味道还行，并没有很惊艳的感觉。比起京菜，湘菜来，川菜的香味却是略有欠缺，大家都喜欢吃火锅。<br><img src="../img/2.6.jpg" alt="番茄牛腩"><br>计划完成的行程，和计划的一样，要累瘫了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/12/川渝游记二/">展开全文 >></a>
         </p>
       
 

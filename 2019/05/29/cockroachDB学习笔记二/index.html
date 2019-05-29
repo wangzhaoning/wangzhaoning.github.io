@@ -6,19 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="//wangzn.xyz">
-  <title>Archives: 2019 | Maskflow的博客</title>
+  <title>cockroachDB学习笔记二 | Maskflow的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="程序员">
+  <meta name="description" content="基础架构最顶层是sql层，cockroachDB的sql层和传统关系型数据库的概念一致。每个Range有3个副本， 节点和Range可以根据不同的物理网络拓扑结构进行编排，从而在可靠性和性能之间折衷。 N为总副本数，F为可容忍故障副本数，则N=2F+1。 CockroachDB key可以是任意字节数组。key有两种类型：系统表key和用户表key。系统表key被用于内部的数据结构和元数据。用户表">
 <meta name="keywords" content="程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Maskflow的博客">
-<meta property="og:url" content="//wangzn.xyz/archives/2019/page/2/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cockroachDB学习笔记二">
+<meta property="og:url" content="//wangzn.xyz/2019/05/29/cockroachDB学习笔记二/index.html">
 <meta property="og:site_name" content="Maskflow的博客">
-<meta property="og:description" content="程序员">
+<meta property="og:description" content="基础架构最顶层是sql层，cockroachDB的sql层和传统关系型数据库的概念一致。每个Range有3个副本， 节点和Range可以根据不同的物理网络拓扑结构进行编排，从而在可靠性和性能之间折衷。 N为总副本数，F为可容忍故障副本数，则N=2F+1。 CockroachDB key可以是任意字节数组。key有两种类型：系统表key和用户表key。系统表key被用于内部的数据结构和元数据。用户表">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="//wangzn.xyz/2019/05/29/img/cr2-1.png">
+<meta property="og:image" content="//wangzn.xyz/2019/05/29/img/cr2-2.png">
+<meta property="og:image" content="//wangzn.xyz/2019/05/29/img/cr2-3.png">
+<meta property="og:updated_time" content="2019-05-29T14:03:44.274Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Maskflow的博客">
-<meta name="twitter:description" content="程序员">
+<meta name="twitter:title" content="cockroachDB学习笔记二">
+<meta name="twitter:description" content="基础架构最顶层是sql层，cockroachDB的sql层和传统关系型数据库的概念一致。每个Range有3个副本， 节点和Range可以根据不同的物理网络拓扑结构进行编排，从而在可靠性和性能之间折衷。 N为总副本数，F为可容忍故障副本数，则N=2F+1。 CockroachDB key可以是任意字节数组。key有两种类型：系统表key和用户表key。系统表key被用于内部的数据结构和元数据。用户表">
+<meta name="twitter:image" content="//wangzn.xyz/2019/05/29/img/cr2-1.png">
   
     <link rel="alternative" href="/atom.xml" title="Maskflow的博客" type="application/atom+xml">
   
@@ -158,79 +163,180 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-cockroachDB学习笔记二" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/12/川渝游记二/" class="archive-article-date">
-  	<time datetime="2019-04-12T14:53:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/12/川渝游记二/">川渝游记二</a>
+    <h1 class="article-title" itemprop="name">
+      cockroachDB学习笔记二
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/11/川渝游记一/" class="archive-article-date">
-  	<time datetime="2019-04-11T14:53:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-11</time>
+        
+        <a href="/2019/05/29/cockroachDB学习笔记二/" class="archive-article-date">
+  	<time datetime="2019-05-29T13:57:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-29</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/11/川渝游记一/">川渝游记一</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基础架构"><a href="#基础架构" class="headerlink" title="基础架构"></a>基础架构</h2><p>最顶层是sql层，cockroachDB的sql层和传统关系型数据库的概念一致。<br><img src="../img/cr2-1.png" alt="架构1"><br><img src="../img/cr2-2.png" alt="架构2"><br>每个Range有3个副本， 节点和Range可以根据不同的物理网络拓扑结构进行编排，从而在可靠性和性能之间折衷。 N为总副本数，F为可容忍故障副本数，则N=2F+1。</p>
+<p>CockroachDB key可以是任意字节数组。key有两种类型：系统表key和用户表key。<br>系统表key被用于内部的数据结构和元数据。用户表key包含用户表数据。<br>系统表key和用户表key通过前缀区分。系统表key始终小于用户表key</p>
+<h2 id="多版本数据"><a href="#多版本数据" class="headerlink" title="多版本数据"></a>多版本数据</h2><p>维护了数据的历史版本，版本之间通过事务的提交时间戳区分。制定快照时间可读取此时间戳之前的最新版本数据。所有的版本都有一个最小的期限。当系统进行compaction时候，过去的版本会被系统回收。用户可以自行制定数据的有效期。</p>
+<h2 id="无锁分布式事务"><a href="#无锁分布式事务" class="headerlink" title="无锁分布式事务"></a>无锁分布式事务</h2><p>两种食物隔离级别<br>快照隔离级别<br>串行化快照隔离级别</p>
+<p>SI性能好，实现简单，但是存在写偏序问题。<br>tip（ 写偏序（Write Skew）也是一致性约束下的异常现象，即两个并行事务都基于自己读到的数据集去覆盖另一部分数据集，在串行化情况下两个事务无论何种先后顺序，最终将达到一致状态，但SI隔离级别下无法实现。下图的“黑白球”常常被用来说明写偏序问题。）<br><img src="../img/cr2-3.png" alt="架构3"><br>相比而言，SSI的实现上稍微复杂一点。<br>SI和SSI都要求缓存该Range上发生的读操作结果，如果写操作时间戳比最近一次读操作时间戳要小，则写操作失败。因此，每个Range都有一个缓存（timestamp cache），保存该Range中key被读取的最新时间戳。<br>依据队列的方式，最老的时间戳会被优先剔除<br>每个事务开始的时候都会被分配一个随机优先级和“候选时间戳”（就是当时本地的时间戳），如果没有事务冲突的话，在事务完成后，这将成为事务的最终提交时间戳。</p>
+<p>在跨多个节点的分布式事务执行过程中，SI允许事务的候选时间戳变大，而SSI不允许。（todo，为啥呢？是因为它是一系列事务串行合集，只会回滚，不会变化）</p>
+<p>每个CockroachDB，维持本地的HLC（混合逻辑时钟），当发送数据的时候，会获取本地的时钟作为时间戳，接受事件时，会根据接受到的事件的时间戳来更新本地的HLC。<br>换句话说，每个节点维护自己的时间戳，当发生事务交互（读写操作时），都会更新本地的HLC，一是用来做事务冲突处理，二是保证之后的事务请求时间戳都大于当前的事务请求时间。事务冲突处理有两种方式，重启和中断，是根据事务类型来做区分。</p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p>关于SSI实现，可参考Cahill论文 《Serializable Isolation for Snapshot Databases》<br>关于SSI如何解决读写冲突，可参考论文《Fast Distributed Transactions for Partitioned Database Systems》<br>关于SSI实现主要参考Yabandeh 的论文《A Critique of Snapshot Isolation》。</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://wangzn.xyz/2019/05/29/cockroachDB学习笔记二/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/05/27/cockroachDB学习笔记一/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">cockroachDB学习笔记一</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础架构"><span class="toc-number">1.</span> <span class="toc-text">基础架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多版本数据"><span class="toc-number">2.</span> <span class="toc-text">多版本数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无锁分布式事务"><span class="toc-number">3.</span> <span class="toc-text">无锁分布式事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-number">4.</span> <span class="toc-text">reference</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
   
 
 
@@ -254,8 +360,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
