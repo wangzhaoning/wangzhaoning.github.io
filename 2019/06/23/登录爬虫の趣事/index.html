@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="//wangzn.xyz">
   <title>登录爬虫の趣事 | Maskflow的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="曾经有这么一段斗争 很久很久以前…第一话小莫想要某站上所有的电影，写了标准的爬虫(基于HttpClient库)，不断地遍历某站的电影列表页面，根据 Html分析电影名字存进自己的数据库。这个站点的运维小黎发现某个时间段请求量陡增，分析日志发现都是IP(xxx.xxx.xxx.xxx)这个用户，并且user-agent还是Python-urllib/2.7，基于这两点判断非人类后直接在服务器上封杀。">
+  <meta name="description" content="曾经有这么一段斗争 很久很久以前……第一话小莫想要某站上所有的电影，写了标准的爬虫(基于HttpClient库)，不断地遍历某站的电影列表页面，根据 Html分析电影名字存进自己的数据库。这个站点的运维小黎发现某个时间段请求量陡增，分析日志发现都是IP(xxx.xxx.xxx.xxx)这个用户，并且user-agent还是Python-urllib/2.7，基于这两点判断非人类后直接在服务器上封杀">
 <meta name="keywords" content="程序员">
 <meta property="og:type" content="article">
 <meta property="og:title" content="登录爬虫の趣事">
 <meta property="og:url" content="//wangzn.xyz/2019/06/23/登录爬虫の趣事/index.html">
 <meta property="og:site_name" content="Maskflow的博客">
-<meta property="og:description" content="曾经有这么一段斗争 很久很久以前…第一话小莫想要某站上所有的电影，写了标准的爬虫(基于HttpClient库)，不断地遍历某站的电影列表页面，根据 Html分析电影名字存进自己的数据库。这个站点的运维小黎发现某个时间段请求量陡增，分析日志发现都是IP(xxx.xxx.xxx.xxx)这个用户，并且user-agent还是Python-urllib/2.7，基于这两点判断非人类后直接在服务器上封杀。">
+<meta property="og:description" content="曾经有这么一段斗争 很久很久以前……第一话小莫想要某站上所有的电影，写了标准的爬虫(基于HttpClient库)，不断地遍历某站的电影列表页面，根据 Html分析电影名字存进自己的数据库。这个站点的运维小黎发现某个时间段请求量陡增，分析日志发现都是IP(xxx.xxx.xxx.xxx)这个用户，并且user-agent还是Python-urllib/2.7，基于这两点判断非人类后直接在服务器上封杀">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="//wangzn.xyz/2019/06/23/img/Spider1.jpg">
 <meta property="og:image" content="//wangzn.xyz/2019/06/23/img/Spider2.jpg">
@@ -22,10 +22,10 @@
 <meta property="og:image" content="//wangzn.xyz/2019/06/23/img/Spider4.jpg">
 <meta property="og:image" content="//wangzn.xyz/2019/06/23/img/Spider5.jpg">
 <meta property="og:image" content="//wangzn.xyz/2019/06/23/img/Spider6.jpg">
-<meta property="og:updated_time" content="2019-06-23T10:26:20.431Z">
+<meta property="og:updated_time" content="2019-06-23T10:35:41.305Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="登录爬虫の趣事">
-<meta name="twitter:description" content="曾经有这么一段斗争 很久很久以前…第一话小莫想要某站上所有的电影，写了标准的爬虫(基于HttpClient库)，不断地遍历某站的电影列表页面，根据 Html分析电影名字存进自己的数据库。这个站点的运维小黎发现某个时间段请求量陡增，分析日志发现都是IP(xxx.xxx.xxx.xxx)这个用户，并且user-agent还是Python-urllib/2.7，基于这两点判断非人类后直接在服务器上封杀。">
+<meta name="twitter:description" content="曾经有这么一段斗争 很久很久以前……第一话小莫想要某站上所有的电影，写了标准的爬虫(基于HttpClient库)，不断地遍历某站的电影列表页面，根据 Html分析电影名字存进自己的数据库。这个站点的运维小黎发现某个时间段请求量陡增，分析日志发现都是IP(xxx.xxx.xxx.xxx)这个用户，并且user-agent还是Python-urllib/2.7，基于这两点判断非人类后直接在服务器上封杀">
 <meta name="twitter:image" content="//wangzn.xyz/2019/06/23/img/Spider1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Maskflow的博客" type="application/atom+xml">
@@ -187,15 +187,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="曾经有这么一段斗争"><a href="#曾经有这么一段斗争" class="headerlink" title="曾经有这么一段斗争"></a><a href="https://www.cnblogs.com/derek1184405959/p/8450130.html" target="_blank" rel="noopener">曾经有这么一段斗争</a></h2><blockquote>
-<p><strong>很久很久以前…</strong><br><strong>第一话</strong><br>小莫想要某站上所有的电影，写了标准的爬虫(基于HttpClient库)，不断地遍历某站的电影列表页面，根据 Html分析电影名字存进自己的数据库。这个站点的运维小黎发现某个时间段请求量陡增，分析日志发现都是IP(xxx.xxx.xxx.xxx)这个用户，并且user-agent还是Python-urllib/2.7，基于这两点判断非人类后直接在服务器上封杀。<br><strong>第二话</strong><br>小莫电影只爬了一半，于是也针对性的变换了下策略：</p>
+<p>很久很久以前……<br><strong>第一话</strong><br>小莫想要某站上所有的电影，写了标准的爬虫(基于HttpClient库)，不断地遍历某站的电影列表页面，根据 Html分析电影名字存进自己的数据库。这个站点的运维小黎发现某个时间段请求量陡增，分析日志发现都是IP(xxx.xxx.xxx.xxx)这个用户，并且user-agent还是Python-urllib/2.7，基于这两点判断非人类后直接在服务器上封杀。<br><strong>第二话</strong><br>小莫电影只爬了一半，于是也针对性的变换了下策略：</p>
 <ol>
 <li>user-agent模仿百度(“Baiduspider…”)</li>
-<li>IP每爬半个小时就换一个IP代理。<br>小黎也发现了对应的变化，于是在服务器上设置了一个频率限制，每分钟超过120次请求的再屏蔽IP。<br>同时考虑到百度家的爬虫有可能会被误伤，想想市场部门每月几十万的投放，于是写了个脚本，通过 hostname 检查下这个 ip是不是真的百度家的，对这些 ip 设置一个白名单。<br><strong>第三话</strong><br>小莫发现了新的限制后，想着我也不急着要这些数据，留给服务器慢慢爬吧，于是修改了代码，随机1-3秒爬一次，爬10次休息10秒，每天只在8-12，18-20点爬，隔几天还休息一下。<br>小黎看着新的日志头都大了，再设定规则不小心会误伤真实用户，于是准备换了一个思路，当3个小时的总请求超过50次的时候弹出一个验证码弹框，没有正确输入的话就把IP 记录进黑名单。<br><strong>第四话</strong><br>小莫看到验证码有些傻脸了，不过也不是没有办法，先去学习了图像识别（关键词PIL，tesseract），再对验证码进行了二值化，分词，模式训练之后，总之最后识别了小黎的验证码（关于验证码，验证码的识别，验证码的反识别也是一个恢弘壮丽的斗争史…），之后爬虫又跑了起来。<br><strong>第五话</strong><br>小黎是个不折不挠的好同学，看到验证码被攻破后，和开发同学商量了变化下开发模式，数据并不再直接渲染，而是由前端同学异步获取，并且通过JavaScript 的加密库生成动态的 token，同时加密库再进行混淆。<br>混淆过的加密库就没有办法了么？当然不是，可以慢慢调试，找到加密原理，不过小莫不准备用这么耗时耗力的方法，他放弃了基于HttpClient的爬虫，选择了内置浏览器引擎的爬虫(关键词：PhantomJS，Selenium)，在浏览器引擎运行页面，直接获取了正确的结果，又一次拿到了对方的数据。<br><strong>第六话</strong><br>小黎：…..</li>
+<li>IP每爬半个小时就换一个IP代理。<br>小黎也发现了对应的变化，于是在服务器上设置了一个频率限制，每分钟超过120次请求的再屏蔽IP。<br>同时考虑到百度家的爬虫有可能会被误伤，想想市场部门每月几十万的投放，于是写了个脚本，通过 hostname 检查下这个 ip是不是真的百度家的，对这些 ip 设置一个白名单。<br><strong>第三话</strong><br>小莫发现了新的限制后，想着我也不急着要这些数据，留给服务器慢慢爬吧，于是修改了代码，随机1-3秒爬一次，爬10次休息10秒，每天只在8-12，18-20点爬，隔几天还休息一下。<br>小黎看着新的日志头都大了，再设定规则不小心会误伤真实用户，于是准备换了一个思路，当3个小时的总请求超过50次的时候弹出一个验证码弹框，没有正确输入的话就把IP 记录进黑名单。<br><strong>第四话</strong><br>小莫看到验证码有些傻脸了，不过也不是没有办法，先去学习了图像识别（关键词PIL，tesseract），再对验证码进行了二值化，分词，模式训练之后，总之最后识别了小黎的验证码（关于验证码，验证码的识别，验证码的反识别也是一个恢弘壮丽的斗争史…），之后爬虫又跑了起来。<br><strong>第五话</strong><br>小黎是个不折不挠的好同学，看到验证码被攻破后，和开发同学商量了变化下开发模式，数据并不再直接渲染，而是由前端同学异步获取，并且通过JavaScript 的加密库生成动态的 token，同时加密库再进行混淆。<br>混淆过的加密库就没有办法了么？当然不是，可以慢慢调试，找到加密原理，不过小莫不准备用这么耗时耗力的方法，他放弃了基于HttpClient的爬虫，选择了内置浏览器引擎的爬虫(关键词：PhantomJS，Selenium)，在浏览器引擎运行页面，直接获取了正确的结果，又一次拿到了对方的数据。<br><strong>第六话</strong><br>小黎：……<br>故事到这里就结束了，我的故事将此也开始了</li>
 </ol>
-</blockquote>
-<hr>
-<blockquote>
-<p>故事到这里就结束了，我的故事将此也开始了</p>
 </blockquote>
 <h2 id="1、简单的登录"><a href="#1、简单的登录" class="headerlink" title="1、简单的登录"></a>1、简单的登录</h2><p>简洁而有效的代码是令人向往的。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">import</span> xml.etree.ElementTree <span class="keyword">as</span> ET</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">    url = <span class="string">'http://1.1.1.1/login.action?logout=true'</span></span><br><span class="line"></span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">'login'</span>: <span class="string">"Log+in"</span>,</span><br><span class="line">        <span class="string">'os_username'</span>: <span class="string">'maskingtime'</span>,</span><br><span class="line">        <span class="string">'os_password'</span>: <span class="string">'123456'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    response = requests.post(url,data)</span><br><span class="line">    <span class="comment"># print(response.text)</span></span><br><span class="line">    cookie = response.cookies.get_dict()</span><br><span class="line">    print(cookie)</span><br><span class="line">    url2 =<span class="string">"http://1.1.1.1/pages/viewpage.action?pageId=15136981"</span></span><br><span class="line">    response2 = requests.get(url2,cookies=cookie)</span><br><span class="line">    print(response2.text)</span><br><span class="line">login()</span><br></pre></td></tr></table></figure></p>
 <p>然而……</p>

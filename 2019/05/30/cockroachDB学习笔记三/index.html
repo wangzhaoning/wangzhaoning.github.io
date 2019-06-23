@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Maskflow的博客">
 <meta property="og:description" content="存储cockroachDB在节点上分配了store这种存储架构，多个Store可以放在同一个节点上，每个store独享一块磁盘，每个Store都被初始化一个rocksDB实例。每个Store中含有Range，同一个节点上的store不能含有同一个Range副本。默认的Range副本数为3，使用zone config控制Range复制策略，通过Constraint控制Range副本位置。(当然这是商">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-30T14:04:31.685Z">
+<meta property="og:updated_time" content="2019-06-23T10:35:54.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cockroachDB学习笔记三">
 <meta name="twitter:description" content="存储cockroachDB在节点上分配了store这种存储架构，多个Store可以放在同一个节点上，每个store独享一块磁盘，每个Store都被初始化一个rocksDB实例。每个Store中含有Range，同一个节点上的store不能含有同一个Range副本。默认的Range副本数为3，使用zone config控制Range复制策略，通过Constraint控制Range副本位置。(当然这是商">
@@ -185,10 +185,12 @@
 <p>TODO：mySql中，innodb的存储引擎是使用B+数存储，数据和索引都存储在同一个文件中，加载数据的时候，每次往内存中加载一度，一个度的大小限定为16kb。之后学习理解kv数据库的具体数据存储方式。</p>
 <h2 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a>一致性</h2><p>cockroachDB使用Raft协议一致性存储。这种算法的使用比较简单。Raft会选举出一个leader最为提交对象。每个follower会周期性的和leader保持心跳，当接受不到leader的心跳。会从剩余的follower中选取一个leader，选举方式依据第一个接受不到leader的心跳的follower发起选举。选举过程是随机的。只有leader才能提交议案，follower只能转发议案。</p>
 <p>为了保持一致性，Range的副本被组织成一个Raft组。假设有3个副本，一般来说，这三个副本都可以进行读写。但是因为执行Raft一致性的开销比较大，所以设置了一个 Range Leases，翻译为租约。一般而言，拥有租约的Range和leader在同一个节点上。当不一样的时候，也将会尽快调节Range，使其恢复。一个副本通过提交节点存活表来获取租约，当副本拥有且应用了之前的请求日志的时候，租约才能生效。只有节点A的存活记录过期并且Epoch被增大，则租约才可以从节点A转移至节点B。<br>当有命令执行range的操作时候，如果该命令是非一致性读，那么它将被立即处理。<br>如果是一致性读和写操作需要满足两个条件：</p>
-<pre><code>* 
-</code></pre><p>该Range副本持有Range租约</p>
-<pre><code>* 
-</code></pre><p>该命令的Key与其他运行中命令的Key没有重叠，并且不存在读/写冲突</p>
+<blockquote>
+<ul>
+<li>该Range副本持有Range租约</li>
+<li>该命令的Key与其他运行中命令的Key没有重叠，并且不存在读/写冲突</li>
+</ul>
+</blockquote>
 <p>当不满足第一条的时候，Range会尝试获取租约，不行就会发送到持有租约的Range，或者直接返回错误信息。<br>当不满足第二条的时候，根据事务的SSI隔离，必须是一致性读，且顺序执行才能进行操作，不然会被中断其中一个事务。或者在操作中，我们可以设置它的回滚。<br>当写命令完成后，所有的副本更新自己的应答缓存来保证幂等性。当读命令完成后，Lease Holder更新本地Read Timestamp Cache，记录该Key最后一次被读取的时间戳。</p>
 <h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><p>当在Range中，数据量过大超过设定的阈值，就会分裂为两个Range。反之，当数据量过小，两个Range就会合并为一个Range，评估指标是Range 的大小和IOps。<br>分裂后，Range会发送拆分的消息给Raft，然后准备新的副本，进入源Range等一系列操作。<br>同时Range还会被分配到新的节点上，分配的方式是通过Gossip协议来进行集群间的负载均衡。<br>使用zone配置可以划Range到指定的数据中心</p>
 
